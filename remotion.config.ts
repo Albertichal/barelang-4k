@@ -1,13 +1,10 @@
-/**
- * Note: When using the Node.JS APIs, the config file
- * doesn't apply. Instead, pass options directly to the APIs.
- *
- * All configuration options: https://remotion.dev/docs/config
- */
-
 import { Config } from "@remotion/cli/config";
 
 Config.setRspack(true);
+Config.setChromiumOpenGlRenderer("angle"); // pakai GPU RTX di Windows
+Config.setConcurrency(1); // RAM 8 GB: satu tab saja
 Config.setVideoImageFormat("jpeg");
+Config.setJpegQuality(95);
 Config.setOverwriteOutput(true);
-Config.setDefaultPremountInSeconds(2);
+// Sengaja TANPA setDefaultPremountInSeconds: premount akan memuat dua kanvas
+// WebGL 4K sekaligus dan menghabiskan VRAM 4 GB.
